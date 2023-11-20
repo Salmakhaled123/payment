@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:payment/core/utils/api_keys.dart';
 
 import 'features/checkout/presentation/views/my_cart_view.dart';
 
 void main() {
+  Stripe.publishableKey = ApiKeys.publishableKey;
   runApp(const CheckOutApp());
 }
 
@@ -19,5 +22,10 @@ class CheckOutApp extends StatelessWidget {
 }
 
 // paymentIntentObject = create payment intent (amount,currency) => call for api
-// intent payment sheet (paymentIntentClientSecret)
+// init payment sheet (paymentIntentClientSecret)
 // presentPaymentSheet
+
+//PaymentIntentModel=>create payment intent (amount,currency,customerId)
+// keySecret =>create ephemeralKey(stripeVersion,customerId)
+//initPaymentSheet(merchantDisplayName,intentClientSecret,ephemeralKeySecret)
+//presentPaymentSheet()

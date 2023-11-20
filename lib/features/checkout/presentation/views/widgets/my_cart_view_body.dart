@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:payment/features/checkout/presentation/views/widgets/payment_methods_list_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:payment/features/checkout/data/repos/checkout_repo_imp.dart';
+import 'package:payment/features/checkout/presentation/view_model/payment_cubit.dart';
+import 'package:payment/features/checkout/presentation/views/widgets/payment_method_bottom_sheet.dart';
 import 'package:payment/features/checkout/presentation/views/widgets/total_price.dart';
 import '../../../../../core/utils/widgets/custom_button.dart';
 import 'order_info_item.dart';
 
 class MyCartViewBody extends StatelessWidget {
   const MyCartViewBody({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -54,7 +58,10 @@ class MyCartViewBody extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16)),
                     context: context,
                     builder: (context) {
-                      return const PaymentsMethodsBottomSheet();
+                      return BlocProvider(
+                        create: (context) => PaymentCubit(CheckoutRepoImp()),
+                        child: const PaymentsMethodsBottomSheet(),
+                      );
                     });
                 // Navigator.push(context, MaterialPageRoute(builder: (context){
                 //   return const PaymentDetailsView();
@@ -63,30 +70,6 @@ class MyCartViewBody extends StatelessWidget {
           const SizedBox(
             height: 12,
           )
-        ],
-      ),
-    );
-  }
-}
-
-class PaymentsMethodsBottomSheet extends StatelessWidget {
-  const PaymentsMethodsBottomSheet({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            height: 16,
-          ),
-          PaymentMethodsListView(),
-          SizedBox(
-            height: 32,
-          ),
-          CustomButton(text: 'Continue')
         ],
       ),
     );

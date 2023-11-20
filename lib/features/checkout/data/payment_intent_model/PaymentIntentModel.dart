@@ -50,15 +50,11 @@ class PaymentIntentModel {
     object = json['object'];
     amount = json['amount'];
     amountCapturable = json['amount_capturable'];
-    amountDetails = json['amount_details'] != null
-        ? AmountDetails.fromJson(json['amount_details'])
-        : null;
+
     amountReceived = json['amount_received'];
     application = json['application'];
     applicationFeeAmount = json['application_fee_amount'];
-    automaticPaymentMethods = json['automatic_payment_methods'] != null
-        ? AutomaticPaymentMethods.fromJson(json['automatic_payment_methods'])
-        : null;
+
     canceledAt = json['canceled_at'];
     cancellationReason = json['cancellation_reason'];
     captureMethod = json['capture_method'];
@@ -78,9 +74,7 @@ class PaymentIntentModel {
     paymentMethod = json['payment_method'];
     paymentMethodConfigurationDetails =
         json['payment_method_configuration_details'];
-    paymentMethodOptions = json['payment_method_options'] != null
-        ? PaymentMethodOptions.fromJson(json['payment_method_options'])
-        : null;
+
     paymentMethodTypes = json['payment_method_types'] != null
         ? json['payment_method_types'].cast<String>()
         : [];
@@ -134,55 +128,4 @@ class PaymentIntentModel {
   String? status;
   dynamic transferData;
   dynamic transferGroup;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['object'] = object;
-    map['amount'] = amount;
-    map['amount_capturable'] = amountCapturable;
-    if (amountDetails != null) {
-      map['amount_details'] = amountDetails?.toJson();
-    }
-    map['amount_received'] = amountReceived;
-    map['application'] = application;
-    map['application_fee_amount'] = applicationFeeAmount;
-    if (automaticPaymentMethods != null) {
-      map['automatic_payment_methods'] = automaticPaymentMethods?.toJson();
-    }
-    map['canceled_at'] = canceledAt;
-    map['cancellation_reason'] = cancellationReason;
-    map['capture_method'] = captureMethod;
-    map['client_secret'] = clientSecret;
-    map['confirmation_method'] = confirmationMethod;
-    map['created'] = created;
-    map['currency'] = currency;
-    map['customer'] = customer;
-    map['description'] = description;
-    map['invoice'] = invoice;
-    map['last_payment_error'] = lastPaymentError;
-    map['latest_charge'] = latestCharge;
-    map['livemode'] = livemode;
-    map['metadata'] = metadata;
-    map['next_action'] = nextAction;
-    map['on_behalf_of'] = onBehalfOf;
-    map['payment_method'] = paymentMethod;
-    map['payment_method_configuration_details'] =
-        paymentMethodConfigurationDetails;
-    if (paymentMethodOptions != null) {
-      map['payment_method_options'] = paymentMethodOptions?.toJson();
-    }
-    map['payment_method_types'] = paymentMethodTypes;
-    map['processing'] = processing;
-    map['receipt_email'] = receiptEmail;
-    map['review'] = review;
-    map['setup_future_usage'] = setupFutureUsage;
-    map['shipping'] = shipping;
-    map['statement_descriptor'] = statementDescriptor;
-    map['statement_descriptor_suffix'] = statementDescriptorSuffix;
-    map['status'] = status;
-    map['transfer_data'] = transferData;
-    map['transfer_group'] = transferGroup;
-    return map;
-  }
 }
