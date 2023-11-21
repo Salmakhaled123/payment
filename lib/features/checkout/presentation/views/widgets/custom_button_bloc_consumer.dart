@@ -39,6 +39,7 @@ class CustomButtonBlocConsumer extends StatelessWidget {
             //         customerId: 'cus_P2fUewtzC282P7');
             // BlocProvider.of<PaymentCubit>(context)
             //     .makePayment(paymentIntentInputModel: paymentIntentInputModel);
+
             Navigator.of(context).push(MaterialPageRoute(
               builder: (BuildContext context) => PaypalCheckoutView(
                 sandboxMode: true,
@@ -47,11 +48,11 @@ class CustomButtonBlocConsumer extends StatelessWidget {
                 transactions: const [
                   {
                     "amount": {
-                      "total": '100',
+                      "total": "100",
                       "currency": "USD",
                       "details": {
-                        "subtotal": '100',
-                        "shipping": '0',
+                        "subtotal": "100",
+                        "shipping": "0",
                         "shipping_discount": 0
                       }
                     },
