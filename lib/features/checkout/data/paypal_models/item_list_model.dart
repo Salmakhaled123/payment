@@ -7,11 +7,11 @@ class ItemsList {
     if (json['items'] != null) {
       items = [];
       json['items'].forEach((v) {
-        items?.add(Items.fromJson(v));
+        items?.add(OrderItemsModel.fromJson(v));
       });
     }
   }
-  List<Items>? items;
+  List<OrderItemsModel>? items;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -22,15 +22,15 @@ class ItemsList {
   }
 }
 
-class Items {
-  Items({
+class OrderItemsModel {
+  OrderItemsModel({
     this.name,
     this.quantity,
     this.price,
     this.currency,
   });
 
-  Items.fromJson(dynamic json) {
+  OrderItemsModel.fromJson(dynamic json) {
     name = json['name'];
     quantity = json['quantity'];
     price = json['price'];
